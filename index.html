@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Joyeux Anniversaire Awen 🎂</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(135deg, #ffecd2, #fcb69f);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #ff4081;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+      animation: bounce 2s infinite;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    video {
+      border: 6px solid white;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      max-width: 90%;
+      height: auto;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    .confetti {
+      position: fixed;
+      top: -10px;
+      width: 10px;
+      height: 10px;
+      background: #ff4081;
+      animation: fall 4s linear infinite;
+      border-radius: 50%;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0); opacity: 1; }
+      100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <h1>🎉 Joyeux 23ème Anniversaire Awen 🎉</h1>
+  <h2>Le 19 septembre, on célèbre ta journée spéciale !</h2>
+
+  <video controls autoplay>
+    <source src="https://www.drostatic.com/mobile/video/8894.mp4" type="video/mp4">
+    Ton navigateur ne supporte pas la lecture de cette vidéo.
+  </video>
+
+  <script>
+    // Générer des confettis aléatoires
+    for(let i=0; i<40; i++) {
+      let confetti = document.createElement("div");
+      confetti.classList.add("confetti");
+      document.body.appendChild(confetti);
+      confetti.style.left = Math.random() * 100 + "vw";
+      confetti.style.backgroundColor = `hsl(${Math.random()*360}, 70%, 60%)`;
+      confetti.style.animationDuration = (Math.random() * 3 + 2) + "s";
+      confetti.style.width = confetti.style.height = (Math.random()*8+5) + "px";
+    }
+  </script>
+</body>
+</html>
