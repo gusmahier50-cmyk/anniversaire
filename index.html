@@ -50,6 +50,9 @@ mode.addEventListener("change", () => {
 document.getElementById("form").addEventListener("submit", async (e) => {
   e.preventDefault();
 
+  // Ici, on met l'URL complète de ton serveur Flask
+  const flaskUrl = "http://127.0.0.1:5001/api/config";
+
   const data = {
     host: document.getElementById("host").value,
     port: document.getElementById("port").value,
@@ -58,13 +61,21 @@ document.getElementById("form").addEventListener("submit", async (e) => {
     direction: document.getElementById("direction")?.value
   };
 
-  await fetch("/api/config", {
-    method: "POST",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify(data)
-  });
+  try {
+    const response = await fetch(flaskUrl, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(data)
+    });
 
-  alert("Commande envoyée !");
+    if (response.ok) {
+      alert("Commande envoyée !");
+    } else {
+      alert("Erreur serveur : " + response.status);
+    }
+  } catch (err) {
+    alert("Impossible de contacter le serveur Flask : " + err);
+  }
 });
 </script>
 
