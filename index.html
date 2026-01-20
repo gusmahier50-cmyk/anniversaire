@@ -6,15 +6,15 @@
 </head>
 <body>
 
-<h2>Contrôle Alpha</h2>
+<h2>Contrôle Alpha (GitHub Pages)</h2>
 
 <form id="form">
 
   <label>Host</label><br>
-  <input type="text" id="host" value="127.0.0.1" required><br><br>
+  <input type="text" id="host" value="127.0.0.1"><br><br>
 
   <label>Port</label><br>
-  <input type="number" id="port" value="223" required><br><br>
+  <input type="number" id="port" value="222"><br><br>
 
   <label>Mode</label><br>
   <select id="mode">
@@ -24,7 +24,7 @@
 
   <div id="scrollBox" style="display:none">
     <label>Message fixe</label><br>
-    <input type="text" id="message" placeholder="Ex : oui"><br><br>
+    <input type="text" id="message"><br><br>
 
     <label>Direction</label><br>
     <select id="direction">
@@ -36,7 +36,6 @@
   </div>
 
   <button type="submit">Envoyer</button>
-
 </form>
 
 <script>
@@ -49,37 +48,9 @@ mode.addEventListener("change", () => {
 
 document.getElementById("form").addEventListener("submit", async (e) => {
   e.preventDefault();
-
-  // Ici, on met l'URL complète de ton serveur Flask
-  const flaskUrl = "http://10.73.5.145:5001/api/config"
-
-  const data = {
-    host: document.getElementById("host").value,
-    port: document.getElementById("port").value,
-    mode: mode.value,
-    message: document.getElementById("message")?.value,
-    direction: document.getElementById("direction")?.value
-  };
-
-  try {
-    const response = await fetch(flaskUrl, {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(data)
-    });
-
-    if (response.ok) {
-      alert("Commande envoyée !");
-    } else {
-      alert("Erreur serveur : " + response.status);
-    }
-  } catch (err) {
-    alert("Impossible de contacter le serveur Flask : " + err);
-  }
+  alert("GitHub Pages ne peut pas contacter le serveur Flask 😅");
 });
 </script>
 
 </body>
 </html>
-
-
